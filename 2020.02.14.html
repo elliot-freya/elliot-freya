@@ -154,7 +154,6 @@
             round: true,
             language: 'zh_CN'
         }) + "</span>";
-        console.log(dur);
         return dur;
     }
 
@@ -174,8 +173,6 @@
             }
 
         });
-        $("body").on()
-
         setTimeout(function () {
             let ajax = new XMLHttpRequest();
             ajax.open("get", "how_long_will_i_love_you.mp3")
@@ -192,12 +189,12 @@
                     $("#loading").fadeOut();
                     setInterval(function () {
                         $("#time").html(timeElapse(together, ['d']));
-                        console.log("vol: ", audio.volume);
                     }, 1000);
                     setTimeout(function () {
                         $("#loading").remove();
                         $("#mailbox").animate({opacity: 1}, 2000, function () {
                             $(".image").on("click", function () {
+                                $(".image").unbind("click");
                                 audio.play();
                                 $(".letter").animate({top: -150});
                                 $(".image").animate({opacity: 0}, 1000, function () {

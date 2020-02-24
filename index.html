@@ -2,9 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>我好喜欢菲菲宝宝呀</title>
+    <link rel="stylesheet" href="css/default.css">
+    <style>
+        *{
+            moz-user-select: -moz-none;
+            -moz-user-select: none;
+            -o-user-select:none;
+            -khtml-user-select:none;
+            -webkit-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+        @font-face {
+            font-family: digit;
+            src: url("fonts/digital-7_mono.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: xinshu;
+            src: url("fonts/font.ttf");
+        }
+        #elapseClock .digit {
+            font-family: "digit", "xinshu", "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
+            font-size: 3rem
+        }
+        #elapseClock {
+            position: absolute;
+            text-align: center; /*让div内部文字居中*/
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        const together = new Date("2019-07-12 22:08").getTime(); //, "YYYY-MM-DD-HH-mm");
+        function timeElapse(c, z) {
+            let now = new Date().getTime();
+            let units;
+            if (typeof z == 'undefined') units = ['y', 'mo', 'd', 'h', 'm', 's'];
+            else units = z;
+            let dur = "<span class='digit'>" + humanizeDuration(now - together, {
+                delimiter: "</span><span class='digit'>",
+                units: units,
+                round: true,
+                language: 'zh_CN'
+            }) + "</span>";
+            return dur;
+        }
+        $(function () {
+            setInterval(function () {
+                $("#elapseClock").html(timeElapse(together));
+            }, 500);
+            setInterval(function () {
+                $("#elapseClock").fadeIn();
+                $("#elapseClock").dblclick(function () {
+                    window.location.href = "2020.02.14.html";
+                })
+            }, 1000);
+
+        });
+        $("body").on(function () {
+            $("#words").fadeOut("fast");
+        })
+    </script>
+    <script src="js/humanize-duration.min.js"></script>
 </head>
 <body>
-
+    <div id="elapseClock"></div>
+</div>
 </body>
 </html>
