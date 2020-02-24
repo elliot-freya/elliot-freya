@@ -1072,7 +1072,7 @@
             word = dictionaryValue
         }
 
-        return countStr + options.spacer + word
+        return countStr +  word + options.spacer
     }
 
     function extend(destination) {
