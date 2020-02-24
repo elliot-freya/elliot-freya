@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>我好喜欢菲菲宝宝呀</title>
-    <link rel="stylesheet" href="css/default.css">
     <style>
         *{
             moz-user-select: -moz-none;
@@ -25,18 +24,34 @@
         }
         #elapseClock .digit {
             font-family: "digit", "xinshu", "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
-            font-size: 3rem
+            font-size: 5rem
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+            background: #ffe;
         }
         #elapseClock {
+            width: 100vw;
+            text-align: center;
             position: absolute;
-            text-align: center; /*让div内部文字居中*/
-            margin: auto;
-            position: absolute;
+            left: 50%;
             top: 50%;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
         }
+        #elapseClock .digit {
+            font-family: "digit", "xinshu", "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
+            font-size: 5rem
+        }
+
     </style>
     <script src="js/jquery.min.js"></script>
     <script>
@@ -50,7 +65,8 @@
                 delimiter: "</span><span class='digit'>",
                 units: units,
                 round: true,
-                language: 'zh_CN'
+                language: 'zh_CN',
+                spacer: ' '
             }) + "</span>";
             return dur;
         }
